@@ -6,6 +6,10 @@ WORKDIR /code
 COPY requirements.txt .
 # установка зависимостей
 RUN pip install -r requirements.txt
+FROM alpine:latest
+RUN apk add python3 && apk add py3-pip
+RUN pip3 install flask
+RUN pip3 install flask-cors
 # копирование содержимого локальной директории src в рабочую директорию
 COPY src/ .
 # команда, выполняемая при запуске контейнера
